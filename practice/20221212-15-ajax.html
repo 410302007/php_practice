@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <form name="form1" onsubmit="checkForm(event)">
+    <input type="number" name="a">
+    +
+    <input type="number" name="b">
+    
+    <button> = </button>  
+    <!-- button若沒有給type，就會submit button -->
+    <span id="result"></span>
+  </form>
+
+  
+  <script>
+    function checkForm(e){
+      e.preventDefault();   //取消預設行為(送出表單)
+      const a = document.form1.a.value;
+      const b = document.form1.b.value;
+      console.log({a,b});    // ex-> {a:'5', b:'5'}
+      console.log(+a + +b);  // ex-> 相加 -> 10
+  
+    //1.建立xhr物件
+    const xhr = new XMLHttpRequest;
+    //2.設定事件處理器  
+    xhr.onload= function(){
+      document.querySelector('#result').innerHTML = xhr.responseText;
+    }
+    //3.設定
+    xhr.open("GET", `20221212-10-isset-qs.php?a=${a}&b=${b}`);
+    //4.發送
+    xhr.send();
+
+  }
+  </script>
+</body>
+</html>
