@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <div class="info">123</div>
+  <div class="info">456</div>
+  
+ 
+  <script>
+  const infos = document.querySelectorAll('.info');
+  console.log(infos);                           //->[div.info, div.info]
+  console.log(infos.constructor.name);          //類型名稱的字串  ->NodeList
+  console.log(infos[0] instanceof Element)      //判斷是否為element(true or flase)-> true  
+  //instance : 個體，實體 
+  console.log(infos[0] instanceof Node)         //判斷是否為node(true or flase) -> true
+
+  </script>
+</body>
+</html>
