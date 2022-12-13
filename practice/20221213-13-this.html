@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+  // ES5的類別宣告    //類型的constructor
+   function Person(name,age){
+    this.name= name;
+    this.age=age;
+    this.getInfo=function(){
+      return `${this.name},${this.age}`;   //this -> 指的是this.getInfo 這個this  
+    }
+   }
+   
+   const p1 = new Person('Bill',25);
+
+   console.log(p1.getInfo());
+   console.log(p1.toString());
+  
+  Person.prototype.toString = function(){
+    return JSON.stringify(this);
+  }
+  console.log(p1.toString());
+  </script>
+
+  
+ 
+</body>
+</html>
