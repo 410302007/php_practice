@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <pre id="info"></pre>
+
+
+
+
+  <script>
+    const p1 = {
+      name:{
+      first: 'David',
+      last: 'Dou'
+    },
+    age:25,
+    gender:'男'
+    };
+    const p2 = p1; //p2參照p1
+    const p3 = {...p1, gender:'女'}; //淺層拷貝
+    const p4 = JSON.parse(JSON.stringify(p1)); //深層拷貝
+
+    p1.age= 35;
+    p1.name.last = 'Wick';
+
+    console.log({p2});  //David Wick; age:35; 男
+    console.log({p3});  //David Wick; age:25; 女 
+    console.log({p4});  //David Dou; age:25; 男
+ 
+  </script>
+</body>
+</html>
