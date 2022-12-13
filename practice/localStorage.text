@@ -12,3 +12,17 @@
   -> undefined
 
   p2 -> {name: 'peter', age: '27'}
+
+
+  --------------------------------------------
+ logics:
+ $a and $b  true，如果 $a 和 $b 都為 true。
+ $a or $b   true，如果 $a 或 $b 任一為 true。
+ $a xor $b  true，如果 $a 或 $b 任一為 true，但不同時是。
+ ! $a       true，如果 $a 不為 true。
+ $a && $b   true，如果 $a 和 $b 都為 true。
+ $a || $b   true，如果 $a 或 $b 任一為 true。
+
+
+ 1. "||" > "or" 
+ 2. "&&" > "and"
