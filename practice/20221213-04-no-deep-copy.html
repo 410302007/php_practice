@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <pre id="info"></pre>
+
+
+
+
+  <script>
+    const p1 = {
+    name:'John',
+    age:25
+    };
+    const p2 = {
+    name:'Kelly',
+    age:22
+    };
+    const p3 = {
+    name:'Bill',
+    age:26
+    };
+    p1.next =p2;
+    p2.next =p3;
+    p3.next =p1;
+    
+  
+    // 無法做深層循環
+    // console.log(JSON.stringify(p1)); //發生結構循環的錯誤 
+  </script>
+</body>
+</html>
