@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <div id="info">123</div>
+  <div id="info">456</div>
+  
+ 
+  <script>
+    console.log(info);
+    console.log([...info]); //可展開 ->   [div#info, div#info]
+    console.log(info.constructor.name);   //類型名稱  -> HTMLCollection
+    console.log(info[0].constructor.name); //類型名稱  -> HTMLDivElement 
+
+  </script>
+</body>
+</html>
