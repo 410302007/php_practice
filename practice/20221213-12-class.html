@@ -15,12 +15,19 @@
 
       //建構函式
       constructor(name='noname', age='18' ){
+
         this.name = name;       //把區域變數的值存放到屬性(this.name)裡
         this.age = age;         //把區域變數的值存放到屬性(this.age)裡
       }
       toJSON(){
         const{name,age,gender} = this;
         return {name,age,gender};
+      }
+      // toString(){
+      //   return'我是一個Person物件';
+      // }
+      toString(){
+        return JSON.stringify(this);
       }
     }
 
