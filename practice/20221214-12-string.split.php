@@ -41,3 +41,17 @@
 </body>
 
 </html>
+<!--
+https://www.president.gov.tw/Page/106
+抓資料
+
+-->
+<script>
+  // 1.
+  const ar = [...document.querySelectorAll('.btn')]; //ar
+  const ar2 = ar.map(function(el) {
+    return el.innerText; //ar2
+  });
+
+  const ar3 = ar.map(el => el.innerText);
+</script>
