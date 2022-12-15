@@ -35,7 +35,7 @@ $title = '新增資料';
 
             <div class="mb-3">
               <label for="birthday" class="form-label">birthday</label>
-              <input type="date" class="form-control" id="birthday" name="birthday">
+              <input type="datetime-local" class="form-control" id="birthday" name="birthday">
               <div class="form-text"></div>
             </div>
 
