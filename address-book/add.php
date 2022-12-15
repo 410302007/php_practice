@@ -67,14 +67,13 @@ $title = '新增資料';
 
     const fd = new FormData(document.form1); //表單物件 //不刷新:不跳轉頁面
 
-    fetch('add-api.php', {
-      method: 'POST',
-      body: fd
-    }).then(function(response) {
-      return response.json() //轉為json文件
-    }).then(obj => {
-      console.log(obj);
-    })
+    fetch('add-api.php', { //fetch 一定使用2個then
+        method: 'POST',
+        body: fd
+      }).then(r => r.json()) //轉為json文件
+      .then(obj => {
+        console.log(obj);
+      })
 
 
   };
