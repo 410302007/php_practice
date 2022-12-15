@@ -1,5 +1,6 @@
 <?php
 require './parts/connect_db.php';
+$pageName = 'list';
 
 $perPage = 25; //每頁25筆
 $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
@@ -74,12 +75,16 @@ if (!empty($totalRows)) {
         <tbody>
           <?php foreach ($rows as $r) : ?>
             <tr>
+              <td><a href="#"><i class="fa-solid fa-trash"></i></a></td>
               <td><?= $r['sid'] ?></td>
               <td><?= $r['name'] ?></td>
               <td><?= $r['email'] ?></td>
               <td><?= $r['mobile'] ?></td>
               <td><?= $r['birthday'] ?></td>
               <td><?= $r['address'] ?></td>
+              <td>
+                <a href="edit.php?sid=<?= $r['sid'] ?>"><i class="fa-solid fa-pen-to-square"></i></a>
+              </td>
             </tr>
           <?php endforeach ?>
         </tbody>
