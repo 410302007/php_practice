@@ -3,19 +3,20 @@ require './parts/connect_db.php';
 $pageName = 'list';
 
 $perPage = 25; //每頁25筆
-$page = isset($_GET['page']) ? intval($_GET['page']) : 1;
+$page = isset($_GET['page']) ? intval($_GET['page']) : 1;  //如果沒有設定，查看的就是第一頁 
 if ($page < 1) {
-  header('Location: ?page=1');   //location 後可加網址 或路徑(+ /.)  
+  header('Location: ?page=1');   //location 後可加網址 或同一網站可用根目錄+路徑.php(ex: /aaa/aa/php)  //轉向第一頁 
   exit;
 }
 $t_sql = "SELECT COUNT(1) FROM address_book";   //4000筆
 //總筆數
-$totalRows = $pdo->query($t_sql)->fetch(PDO::FETCH_NUM)[0];    //fetch_num->索引式陣列 //第一個column就是總筆數
+$totalRows = $pdo->query($t_sql)->fetch(PDO::FETCH_NUM)[0];    //fetch_num->索引式陣列 //第一個column的值=>總筆數
+//query($t_sql)-> statement物件呼叫索引式陣列->一欄只有一筆
 
 //總頁數
 $totalPages = ceil($totalRows / $perPage); //ceil  
 
-$rows = [];
+$rows = [];   //預設值(空陣列)->假設沒有資料
 //如果有資料的話
 if (!empty($totalRows)) {
   if ($page > $totalPages) {
@@ -39,6 +40,7 @@ if (!empty($totalRows)) {
 <?php include './parts/html-head.php' ?>
 <?php include './parts/navbar.php' ?>
 <div class="container">
+  <!-- <div><?= $totalRows ?></div> -->
   <div class="row">
     <div class="col">
       <nav aria-label="Page navigation example">
