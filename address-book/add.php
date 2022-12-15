@@ -13,10 +13,11 @@ $title = '新增資料';
       <div class="card">
         <div class="card-body">
           <h5 class="card-title">新增資料</h5>
-          <form name="form1" onsubmit="checkForm(event)">
+          <form name="form1" onsubmit="checkForm(event)" novalidate>
+            <!--novalidate->不要驗證-->
             <div class="mb-3">
               <label for="name" class="form-label">name</label>
-              <input type="text" class="form-control" id="name" name="name">
+              <input type="text" class="form-control" id="name" name="name" required>
               <div class="form-text"></div>
             </div>
 
@@ -28,7 +29,7 @@ $title = '新增資料';
 
             <div class="mb-3">
               <label for="mobile" class="form-label">mobile</label>
-              <input type="text" class="form-control" id="mobile" name="mobile">
+              <input type="text" class="form-control" id="mobile" name="mobile" pattern="09\d{2}-?\d{3}-\d{3}">
               <div class="form-text"></div>
             </div>
 
