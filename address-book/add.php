@@ -13,7 +13,7 @@ $title = '新增資料';
       <div class="card">
         <div class="card-body">
           <h5 class="card-title">新增資料</h5>
-          <form name="form1" method="post">
+          <form name="form1" method="post" action="add-api.php">
             <div class="mb-3">
               <label for="name" class="form-label">name</label>
               <input type="text" class="form-control" id="name" name="name">
@@ -34,7 +34,7 @@ $title = '新增資料';
 
             <div class="mb-3">
               <label for="birthday" class="form-label">birthday</label>
-              <input type="text" class="form-control" id="birthday" name="birthday">
+              <input type="date" class="form-control" id="birthday" name="birthday">
               <div class="form-text"></div>
             </div>
 
