@@ -19,11 +19,11 @@ if (empty($_POST['name'])) {
 $isPass = true;
 
 if (mb_strlen($_POST['name']) < 2) {
-  $output['erros']['name'] = '請填寫正確的姓名';
+  $output['errors']['name'] = '請填寫正確的姓名';
   $isPass = false;
 }
 if (mb_strlen($_POST['email']) < 2) {
-  $output['erros']['email'] = '請填寫正確的email';
+  $output['errors']['email'] = '請填寫正確的email';
   $isPass = false;
 }
 
