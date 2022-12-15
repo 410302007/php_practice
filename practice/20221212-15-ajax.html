@@ -27,13 +27,13 @@
       console.log(+a + +b);  // ex-> 相加 -> 10
   
     //1.建立xhr物件
-    const xhr = new XMLHttpRequest;
+    const xhr = new XMLHttpRequest;  //跨瀏覽器撈資料
     //2.設定事件處理器  
     xhr.onload= function(){
       console.log('A');
       document.querySelector('#result').innerHTML = xhr.responseText;
     }
-    //3.設定
+    //3.設定  
     xhr.open("GET", `20221212-10-isset-qs.php?a=${a}&b=${b}`);
     console.log('B');
     

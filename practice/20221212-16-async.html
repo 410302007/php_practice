@@ -30,7 +30,7 @@
   
     
     const xhr = new XMLHttpRequest;
-    xhr.open("GET", `20221212-10-isset-qs.php?a=${a}&b=${b}`, false); //同步的方式
+    xhr.open("GET", `20221212-10-isset-qs.php?a=${a}&b=${b}`, false); //false=>同步的方式; true =>非同步
     xhr.send();
     document.querySelector('#result').innerHTML = xhr.responseText;
   }
