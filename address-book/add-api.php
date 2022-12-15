@@ -31,7 +31,7 @@ $stmt = $pdo->prepare($sql);
 $birthday = null;
 if (!empty($_POST['birthday'])) {
   $t = strtotime($_POST['birthday']);
-  if ($t !== null) {
+  if ($t !== false) {
     $birthday = date('Y-m-d', $t);
   }
 }
