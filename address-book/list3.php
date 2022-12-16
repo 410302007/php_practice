@@ -64,18 +64,20 @@ if (!empty($totalRows)) {
       <table class="table table-striped table-bordered">
         <thead>
           <tr>
+            <th scope="col"><i class="fa-solid fa-trash-can"></i></th>
             <th scope="col">#</th>
             <th scope="col">姓名</th>
             <th scope="col">電郵</th>
             <th scope="col">手機</th>
             <th scope="col">生日</th>
             <th scope="col">地址</th>
+            <th scope="col"><i class="fa-solid fa-file-pen"></i></th>
           </tr>
         </thead>
         <tbody>
           <?php foreach ($rows as $r) : ?>
             <tr>
-              <td><a href="javascript:" onclick="remove_item(event)"><i class="fa-solid fa-trash"></i></a></td>
+              <td><a href="javascript:" onclick="remove_item(event)"><i class="fa-solid fa-trash-can"></i></a></td>
               <td><?= $r['sid'] ?></td>
               <td><?= $r['name'] ?></td>
               <td><?= $r['email'] ?></td>
@@ -83,7 +85,7 @@ if (!empty($totalRows)) {
               <td><?= $r['birthday'] ?></td>
               <td><?= $r['address'] ?></td>
               <td>
-                <a href="edit.php?sid=<?= $r['sid'] ?>"><i class="fa-solid fa-pen-to-square"></i></a>
+                <a href="edit.php?sid=<?= $r['sid'] ?>"><i class="fa-solid fa-file-pen"></i></a>
               </td>
             </tr>
           <?php endforeach ?>
