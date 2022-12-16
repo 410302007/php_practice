@@ -7,7 +7,7 @@ if (isset($title)) {
 $pageName = $pageName ?? ''; //如果沒有設定，就設定為空字串
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 
 <head>
   <meta charset="UTF-8">
