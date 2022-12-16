@@ -40,16 +40,15 @@ if (!empty($totalRows)) {
 <?php include './parts/html-head.php' ?>
 <?php include './parts/navbar.php' ?>
 <div class="container">
-  <!-- <div><?= $totalRows ?></div> -->
   <div class="row">
     <div class="col">
       <nav aria-label="Page navigation example">
         <ul class="pagination">
           <li class="page-item <?= $page == 1 ? 'disabled' : '' ?>">
-            <a class="page-link" href="?page=<?= $page - 1 ?>">Previous</a>
+            <a class="page-link" href="?page=<?= $page - 1 ?>"><i class="fa-solid fa-circle-arrow-left"></i></a>
           </li>
 
-          <?php for ($i = $page - 3; $i <= $page + 3; $i++) :
+          <?php for ($i = $page - 5; $i <= $page + 5; $i++) :
             if ($i >= 1 and $i <= $totalPages) :
           ?>
               <li class="page-item <?= $i == $page ? 'active' : '' ?> ">
@@ -59,25 +58,35 @@ if (!empty($totalRows)) {
           endfor; ?>
 
           <li class="page-item <?= $page == $totalPages ? 'disabled' : '' ?>">
-            <a class="page-link" href="?page=<?= $page + 1 ?>">Next</a>
+            <a class="page-link" href="?page=<?= $page + 1 ?>"><i class="fa-solid fa-circle-arrow-right"></i></a>
           </li>
         </ul>
       </nav>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
       <table class="table table-striped table-bordered">
         <thead>
           <tr>
+            <th scope="col"><i class="fa-solid fa-trash-can"></i></th>
             <th scope="col">#</th>
             <th scope="col">姓名</th>
             <th scope="col">電郵</th>
             <th scope="col">手機</th>
             <th scope="col">生日</th>
             <th scope="col">地址</th>
+            <th scope="col"><i class="fa-solid fa-file-pen"></i></th>
           </tr>
         </thead>
         <tbody>
           <?php foreach ($rows as $r) : ?>
             <tr>
-              <td><a href="#"><i class="fa-solid fa-trash"></i></a></td>
+              <td>
+                <a href="delete.php?sid=<?= $r['sid'] ?>">
+                  <i class="fa-solid fa-trash-can"></i>
+                </a>
+              </td>
               <td><?= $r['sid'] ?></td>
               <td><?= $r['name'] ?></td>
               <td><?= $r['email'] ?></td>
@@ -85,7 +94,9 @@ if (!empty($totalRows)) {
               <td><?= $r['birthday'] ?></td>
               <td><?= $r['address'] ?></td>
               <td>
-                <a href="edit.php?sid=<?= $r['sid'] ?>"><i class="fa-solid fa-pen-to-square"></i></a>
+                <a href="edit.php?sid=<?= $r['sid'] ?>">
+                  <i class="fa-solid fa-file-pen"></i>
+                </a>
               </td>
             </tr>
           <?php endforeach ?>
