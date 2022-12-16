@@ -17,12 +17,17 @@ if (empty($_POST['name'])) {
 
 // TODO: 欄位資料檢查
 $isPass = true;
+$name = $_POST['name'] ?? '';
+$email = $_POST['email'] ?? '';
+$mobile = $_POST['mobile'] ?? '';
+$birthday = $_POST['birthday'] ?? '';
+$address = $_POST['address'] ?? '';
 
-if (mb_strlen($_POST['name']) < 2) {
+if (mb_strlen($name) < 2) {
   $output['errors']['name'] = '請填寫正確的姓名';
   $isPass = false;
 }
-if (mb_strlen($_POST['email']) < 2) {
+if (mb_strlen($email) < 2) {
   $output['errors']['email'] = '請填寫正確的email';
   $isPass = false;
 }
@@ -38,20 +43,23 @@ $sql = "INSERT INTO `address_book`(
 $stmt = $pdo->prepare($sql);
 
 
-$birthday = null;
-if (!empty($_POST['birthday'])) {
+// $birthday = null;
+if (!empty($_POST['birthday'])) {    //如果有設定的話話
   $t = strtotime($_POST['birthday']);
   if ($t !== false) {
     $birthday = date('Y-m-d', $t);
   }
 }
+if (empty($birthday)) {
+  $birthday = null;
+}
 if ($isPass) {
   $stmt->execute([
-    $_POST['name'],
-    $_POST['email'],
-    $_POST['mobile'] ?? '',
+    $name,
+    $email,
+    $mobile,
     $birthday,
-    $_POST['address'] ?? '',
+    $address,
   ]);
 
   $output['success'] = !!$stmt->rowCount();
