@@ -22,7 +22,7 @@ $pageName = 'login';
 
 
       <button type="submit" class="btn btn-primary">Submit</button>
-      <!--直接觸發Onsubmit(17)-->
+
     </form>
 
   </div>
