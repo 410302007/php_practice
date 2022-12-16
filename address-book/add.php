@@ -48,6 +48,7 @@ $title = "新增資料";
 
 
             <button type="submit" class="btn btn-primary">Submit</button>
+            <!--直接觸發Onsubmit(17)-->
           </form>
 
         </div>
@@ -112,5 +113,10 @@ $title = "新增資料";
       })
 
   };
+  //取得頁面上所有的表單-> document.forms
+  //某個表單(名稱為form1)裡面的所有欄位 -> document.form1.elements
+  // 拿到某一表單的欄位 -> document.form1.elements[2]
+  //                   -> document.form1.element['mobile']
+  //                   -> document.form1.mobile 
 </script>
 <?php include './parts/html-foot.php' ?>
