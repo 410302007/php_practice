@@ -28,6 +28,7 @@ if (empty($r)) {
         <div class="card-body">
           <h5 class="card-title">修改資料</h5>
           <form name="form1" onsubmit="checkForm(event)" novalidate>
+            <input type="hidden" name="sid" value="<?= $r['sid'] ?>">
             <div class="mb-3">
               <label for="name" class="form-label">name</label>
               <!-- htmlentities => 把字轉換為html -->
