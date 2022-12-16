@@ -1,4 +1,5 @@
 <?php
+require './admin-required.php';
 require './parts/connect_db.php';
 $title = '修改資料';
 
@@ -136,7 +137,7 @@ if (empty($r)) {
               el.nextElementSibling.innerHTML = obj.errors[k];
             }
           }
-          alert('資料沒有修改');
+          alert(`資料沒有修改`);
         }
       })
   };
