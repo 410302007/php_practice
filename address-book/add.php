@@ -62,6 +62,11 @@ $title = "新增資料";
 </div>
 <?php include './parts/scripts.php' ?>
 <script>
+  function validateEmail(email) {
+    var re =
+      /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zAZ]{2,}))$/;
+    return re.test(email);
+  }
   const checkForm = (e) => {
     e.preventDefault(); // 不要讓原來的表單送出
 
@@ -74,7 +79,26 @@ $title = "新增資料";
 
 
     // TODO: 欄位資料檢查
+    let isPass = true; //預設是通過驗證的
 
+    let field = document.form1.name; //當前要驗證的欄位
+    if (field.value.length < 2) {
+      isPass = false;
+      field.style.border = '2px solid red';
+      field.nextElementSibling.innerHTML = '請輸入正確的名字';
+    }
+
+    field = document.form1.email; //當前要驗證的欄位
+    if (!validateEmail(field.value)) {
+      isPass = false;
+      field.style.border = '2px solid red';
+      field.nextElementSibling.innerHTML = '請輸入正確的名字';
+    }
+
+
+    if (!isPass) {
+      return; //沒有通過驗證就結束，不發AJAX request
+    }
     const fd = new FormData(document.form1);
     /*
         fetch('add-api.php', {
