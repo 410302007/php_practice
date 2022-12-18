@@ -61,6 +61,19 @@ $title = '新增資料';
   const checkForm = (e) => {
     e.preventDefault(); //不要讓原來的表單送出
 
+    //所有輸入欄回復原來的外觀
+    const inputs = document.querySelectorAll('input.form-control');
+    inputs.forEach((el) => {
+      el.style.border = '1px solid #CCCCCC';
+      el.nextElementSibling.innerHTML = '';
+
+    });
+
+
+
+
+
+
     //TODO: 欄位資料檢查
 
 
@@ -82,6 +95,17 @@ $title = '新增資料';
       }).then(r => r.json())
       .then(obj => {
         console.log(obj);
+        if (obj.success) {
+          alert('新增成功');
+        } else {
+          for (let k in obj.errors) {
+            const el = document.querySelector('#' + k);
+            if (el) {
+              el.style.border = '2px solid red';
+              el.nextElementSibling.innerHTML = obj.errors[k];
+            }
+          }
+        }
       })
 
     //轉換為純文字
