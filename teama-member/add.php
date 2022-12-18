@@ -14,7 +14,7 @@ $title = '新增資料';
       <div class="card">
         <div class="card-body">
           <h5 class="card-title">新增資料</h5>
-          <form name="form1" method="post" action="add-api.php">
+          <form name="form1" onsubmit="checkForm(event)">
             <div class="mb-3">
               <label for="name" class="form-label">name</label>
               <input type="text" class="form-control" id="name" name="name">
@@ -55,4 +55,37 @@ $title = '新增資料';
 </div>
 
 <?php include './parts/scripts.php' ?>
+<script>
+  const checkForm = (e) => {
+    e.preventDefault(); //不要讓原來的表單送出
+
+    //TODO: 欄位資料檢查
+
+    const formData = new FormData(document.form1); //formData 為表單物件
+
+    //轉換為json格式
+    fetch('add-api.php', {
+      method: 'POST', //post 方式送表單
+      body: formData //送formData這個物件
+    }).then(function(response) {
+      return response.json()
+    }).then(obj => {
+      console.log(obj);
+    })
+
+    //轉換為純文字
+    // fetch('add-api.php', {
+    //   method: 'POST', //post 方式送表單
+    //   body: formData //送formData這個物件
+    // }).then(function(response) {
+    //   return response.text()    
+    // }).then(txt => {
+    //   console.log(txt);
+    // })
+
+
+
+
+  };
+</script>
 <?php include './parts/html-foot.php' ?>
