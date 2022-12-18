@@ -1,5 +1,6 @@
 <?php
 require './parts/connect_db.php';
+$pageName = 'list';
 
 $perPage = 25;
 $page = isset($_GET['page']) ? intval($_GET['page']) : 1;  //如果沒有設定，查看的就是第一頁 
