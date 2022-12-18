@@ -34,7 +34,7 @@ if ($t !== false) {
 
 $stmt->execute([
   $_POST['name'],
-  $_POST['email'],
+  $_POST['email'],   //$_POST['email']??'', > 如果沒有自然define就寫入空字串
   $_POST['mobile'],
   $_POST['birthday'],
   $_POST['address'],
