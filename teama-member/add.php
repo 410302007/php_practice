@@ -2,7 +2,7 @@
 
 require './parts/connect_db.php';
 $pageName = 'add';
-
+$title = '新增資料';
 ?>
 
 
