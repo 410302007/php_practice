@@ -45,7 +45,7 @@ if (!empty($totalRows)) {
     <div class="col">
       <nav aria-label="Page navigation example">
         <ul class="pagination">
-          <li class="page-item <?= $page == 1 ? 'disabled' : '' ?>"><a class="page-link" href="?page=<?= $page - 1 ?>">Previous</a></li>
+          <li class="page-item <?= $page == 1 ? 'disabled' : '' ?>"><a class="page-link" href="?page=<?= $page - 1 ?>"><i class="fa-solid fa-circle-arrow-left"></i></a></li>
           <?php for ($i = $page - 3; $i <= $page + 3; $i++) : if ($i >= 1 and $i <= $totalPages) : ?>
               <li class="page-item <?= $i == $page ? 'active' : '' ?>">
                 <!---->
@@ -54,7 +54,7 @@ if (!empty($totalRows)) {
           <?php endif;
           endfor ?>
 
-          <li class="page-item <?= $page == $totalPages ? 'disabled' : '' ?>"><a class="page-link" href="?page=<?= $page + 1 ?>">Next</a></li>
+          <li class="page-item <?= $page == $totalPages ? 'disabled' : '' ?>"><a class="page-link" href="?page=<?= $page + 1 ?>"><i class="fa-solid fa-circle-arrow-right"></i></a></li>
         </ul>
       </nav>
     </div>
@@ -64,6 +64,7 @@ if (!empty($totalRows)) {
       <table class="table table-striped table-bordered">
         <thead>
           <tr>
+            <th scope="col"><i class="fa-solid fa-trash"></i></th>
             <th scope="col">#</th>
             <th scope="col">姓名</th>
             <th scope="col">電郵</th>
@@ -72,11 +73,17 @@ if (!empty($totalRows)) {
             <th scope="col">地址</th>
             <th scope="col">帳號狀態</th>
             <th scope="col">創建時間</th>
+            <th scope="col"><i class="fa-solid fa-file-pen"></i></th>
           </tr>
         </thead>
         <tbody>
           <?php foreach ($rows as $r) : ?>
             <tr>
+              <td>
+                <a href="delete.php?mid=<?= $r['mid'] ?>">
+                  <i class="fa-solid fa-trash"></i>
+                </a>
+              </td>
               <td><?= $r['mid'] ?></td>
               <td><?= $r['name'] ?></td>
               <td><?= $r['email'] ?></td>
@@ -85,6 +92,11 @@ if (!empty($totalRows)) {
               <td><?= $r['address'] ?></td>
               <td><?= $r['member_status'] ?></td>
               <td><?= $r['created_at'] ?></td>
+              <td>
+                <a href="edit.php?mid=<?= $r['mid'] ?>">
+                  <i class="fa-solid fa-file-pen"></i>
+                </a>
+              </td>
             </tr>
           <?php endforeach ?>
         </tbody>
