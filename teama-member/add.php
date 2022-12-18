@@ -63,6 +63,8 @@ $title = '新增資料';
 
     //TODO: 欄位資料檢查
 
+
+
     const formData = new FormData(document.form1); //formData 為表單物件
 
     //轉換為json格式
