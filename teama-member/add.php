@@ -64,14 +64,21 @@ $title = '新增資料';
     const formData = new FormData(document.form1); //formData 為表單物件
 
     //轉換為json格式
+    // fetch('add-api.php', {
+    //   method: 'POST', //post 方式送表單
+    //   body: formData //送formData這個物件
+    // }).then(function(response) {
+    //   return response.json()
+    // }).then(obj => {
+    //   console.log(obj);
+    // })方法同下
     fetch('add-api.php', {
-      method: 'POST', //post 方式送表單
-      body: formData //送formData這個物件
-    }).then(function(response) {
-      return response.json()
-    }).then(obj => {
-      console.log(obj);
-    })
+        method: 'POST', //post 方式送表單
+        body: formData //送formData這個物件
+      }).then(r => r.json())
+      .then(obj => {
+        console.log(obj);
+      })
 
     //轉換為純文字
     // fetch('add-api.php', {
@@ -82,6 +89,8 @@ $title = '新增資料';
     // }).then(txt => {
     //   console.log(txt);
     // })
+
+
 
 
 
