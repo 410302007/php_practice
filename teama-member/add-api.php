@@ -7,11 +7,11 @@ $output = [
   'success' => false,  //回給用戶端 看是否新增成功;預設值為false
   'postData' => $_POST,
   'code' => 0,
-  'error' => []
+  'errors' => []
 ];
 
 if (empty($_POST['name'])) {
-  $output['error']['name'] = '沒有姓名資料';
+  $output['errors']['name'] = '沒有姓名資料';
   echo json_encode($output, JSON_UNESCAPED_UNICODE);
   exit;
 }
@@ -30,7 +30,8 @@ $stmt->execute([
   $_POST['birthday'],
   $_POST['address'],
 ]);
-$output['success'] = $stmt->rowCount();
+//有無新增成功-> 看rowCount
+$output['success'] = !!$stmt->rowCount();
 
 
 echo json_encode($output, JSON_UNESCAPED_UNICODE);
