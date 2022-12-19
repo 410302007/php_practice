@@ -92,7 +92,7 @@ if (!empty($totalRows)) {
               <td><?= $r['mobile'] ?></td>
               <td><?= $r['birthday'] ?></td>
               <td><?= $r['address'] ?></td>
-              <td><?= $r['member_status'] ?></td>
+              <td><?= $r['member_status'] == 1 ? '正常' : '停權' ?></td>
               <td><?= $r['created_at'] ?></td>
               <td>
                 <a href="edit.php?mid=<?= $r['mid'] ?>">
