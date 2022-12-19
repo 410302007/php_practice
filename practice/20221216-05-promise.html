@@ -20,7 +20,7 @@
       console.log({result});
       // return 'world';
       return new Promise((resolve,reject)=>{        //Promise 非同步
-      setTimeout(()=>{
+      setTimeout(()=>{                              //這邊發生錯誤-> catch抓到
         
         reject('error1');
       },2000);
@@ -29,7 +29,7 @@
      
       console.log({a});
     })
-    .catch(ex=>{
+    .catch(ex=>{                           //若在catch後面加then ，若then發生錯誤， catch抓不到
         console.log({ ex });
       })                        
    
