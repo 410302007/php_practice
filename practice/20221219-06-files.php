@@ -3,7 +3,8 @@
 header('Content-Type: application/json');
 echo json_encode($_FILES);
 
-/*  選擇一張照片
+//選擇一個檔案
+/*  
 {
     "photos": {
         "name": "Shinnosuke1.jpg",
