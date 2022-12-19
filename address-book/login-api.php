@@ -37,6 +37,7 @@ if (
   $_SESSION['admin'] = [
     'sid' => $row['sid'],
     'account' => $row['account'],
+    'avatar' => $row['avatar'],
   ];
 } else {
   # 密碼錯誤
