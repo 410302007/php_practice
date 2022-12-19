@@ -21,11 +21,11 @@ $path = __DIR__ . '/../uploads/';   //路徑位址
 if (!empty($_FILES['avatar'])) {  //篩選看有無上傳次檔案
   $f = $_FILES['avatar'];
 
-  $ext = $extMap[$f['type']] ? $extMap[$f['type']] : ''; //決定副檔名
+  $ext = isset($extMap[$f['type']]) ? $extMap[$f['type']] : ''; //決定副檔名
   if (empty($ext)) {     //檔案類型是錯的
     $output['error'] = '檔案類型錯誤';
   } else {
-    $fname = sha1($f['name'] . uniqid()) . $ext;   //字串   //uniqid 可改random(ran)   //檔案名稱 不包含路徑    
+    $fname = sha1($f['name'] . rand()) . $ext;   //字串   //uniqid 可改random(rand)   //檔案名稱 不包含路徑    
   }
 
   if (move_uploaded_file(
