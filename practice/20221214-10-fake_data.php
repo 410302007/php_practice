@@ -12,7 +12,7 @@ $sql = "INSERT INTO `address_book`(
         `email`, 
         `mobile`, 
         `birthday`, 
-        `address`, 
+        `address`,
         `created_at`
     ) VALUES (
         ?,
@@ -33,6 +33,7 @@ for ($i = 0; $i < 1000; $i++) {
   $mobile = '0918' . rand(100000, 999999);
   $t = rand(strtotime('1985-01-01'), strtotime('2000-01-01'));
   $birthday =  date('Y-m-d', $t);
+
 
   shuffle($areas);
   $address = $areas[0];
