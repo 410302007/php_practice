@@ -17,33 +17,33 @@ $title = '新增資料';
           <form name="form1" onsubmit="checkForm(event)" novalidate>
             <!--novalidate->不要驗證-->
             <div class="mb-3">
-              <label for="name" class="form-label">name</label>
+              <label for="name" class="form-label">名字</label>
               <input type="text" class="form-control" id="name" name="name" required>
               <div class="form-text"></div>
             </div>
             <div class="mb-3">
-              <label for="email" class="form-label">email</label>
+              <label for="email" class="form-label">信箱</label>
               <input type="email" class="form-control" id="email" name="email" required>
               <div class="form-text"></div>
             </div>
             <div class="mb-3">
-              <label for="mobile" class="form-label">mobile</label>
+              <label for="mobile" class="form-label">電話</label>
               <input type="number" class="form-control" id="mobile" name="mobile" pattern="09\d{2}\d{3}\d{3}">
               <div class="form-text"></div>
             </div>
             <div class="mb-3">
-              <label for="birthday" class="form-label">birthday</label>
+              <label for="birthday" class="form-label">生日</label>
               <input type="date" class="form-control" id="birthday" name="birthday">
               <!--input type="datetime-local" => 年、月、日、時、分-->
               <div class="form-text"></div>
             </div>
             <div class="mb-3">
-              <label for="address" class="form-label">address</label>
+              <label for="address" class="form-label">地址</label>
               <textarea class="form-control" name="address" id="address" cols="30" rows="3"></textarea>
               <div class="form-text"></div>
             </div>
 
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary">送出</button>
           </form>
         </div>
       </div>
@@ -117,12 +117,19 @@ $title = '新增資料';
     // }).then(txt => {
     //   console.log(txt);
     // })
+    /*
+    取得頁面上所有的表單
+      document.forms
+    某個表單(名稱為form1)裡的所有欄位
+      document.form1.elements
+    
+    拿到某一個表單欄位
+    document.form1.mobile
+    document.form1.elements['mobile']
+    document.forom1.elements[2]
 
 
-
-
-
-
+    */
   };
 </script>
 <?php include './parts/html-foot.php' ?>
