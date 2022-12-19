@@ -1,7 +1,7 @@
 <?php
 
 header('Content-Type: application/json');
-//上傳的欄位名稱為photo
+//上傳的欄位名稱為avatar
 
 //輸出的格式
 $output = [
@@ -18,8 +18,8 @@ $extMap = [
 $path = __DIR__ . '/../uploads/';   //路徑位址   
 
 
-if (!empty($_FILES['photo'])) {  //篩選看有無上傳次檔案
-  $f = $_FILES['photo'];
+if (!empty($_FILES['avatar'])) {  //篩選看有無上傳次檔案
+  $f = $_FILES['avatar'];
 
   $ext = $extMap[$f['type']] ? $extMap[$f['type']] : ''; //決定副檔名
   if (empty($ext)) {     //檔案類型是錯的
