@@ -22,7 +22,7 @@ $stmt = $pdo->prepare($sql);
 
 $stmt->execute([
   $_GET['filename'],
-  $_SESSION['admin']['sid'],
+  $_SESSION['admin']['sid'],    //登入成功後，session會有值，可代入
 ]);
 
 $output['success'] = !!$stmt->rowCount();
