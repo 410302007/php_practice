@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+
+  <script>
+    function myPromise(id){
+      const t = 500 + Math.floor(Math.random()*1000);
+      return new Promise((resolve,reject)=>{
+        setTimeout(()=>{
+          // console.log({id,t});
+          resolve({id,t});
+      }, t);
+      });
+    }                               // async->非同步
+    (async ()=>{                    //await 放於async 的 function內，且不能加then ; await後面一定要加promise
+      for(let i = 0; i<10; i++){            //放於async function內->按照順序
+      const r = await myPromise('A'+i);
+        console.log(r);  
+        const s= await myPromise('B'+i);
+        console.log(s);         
+    }
+    })();    
+    // (async ()=>{                              //分開放 -> 只能確保A、B各自的順序
+    //   for(let i = 0; i<10; i++){        
+    //   const r = await myPromise('B'+i);
+    //     console.log(r);     
+    // }
+    // })();  
+    
+
+    
+    
+
+    
+  </script>
+</body>
+</html>
