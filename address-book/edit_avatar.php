@@ -1,5 +1,5 @@
 <?php
-require './parts/connect_db.php'; //連線資料庫
+require './parts/connect_db.php';
 
 
 
@@ -61,9 +61,9 @@ require './parts/connect_db.php'; //連線資料庫
     const r = await fetch(`edit_avatar-api.php?filename=${filename}`);
     const data = await r.json();
     if (data.success) {
-      alert('大頭貼更新完成');
+      alert('大頭貼更新完成~');
     } else {
-      alert('大頭貼更新發生錯誤');
+      alert('大頭貼更新發生錯誤!!');
     }
   }
 </script>
