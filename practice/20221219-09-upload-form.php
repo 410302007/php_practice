@@ -21,7 +21,8 @@
     const f = document.form1.my_file;
 
     f_onchange = (e) => {
-      console.log(f.files); //FileList , File
+      console.log(f.files); //FileList, File
+
     };
   </script>
 </body>
