@@ -6,7 +6,7 @@ echo json_encode($_FILES);
 //選擇一個檔案
 /*  
 {
-    "photos": {
+    "avatar": {
         "name": "Shinnosuke1.jpg",
         "full_path": "Shinnosuke1.jpg",
         "type": "image/jpeg",
