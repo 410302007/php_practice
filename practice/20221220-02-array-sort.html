@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+
+
+  <script>
+   let people=[
+    {name:"David", age:25},
+    {name:"Carl", age:28},
+    {name:"Kelly", age:21},
+   ];
+
+  //  people.sort((a,b)=>{
+  //   return b.age-a.age;   //年齡降冪排序
+  //  });
+
+   people.sort((a,b)=>{
+    return b.name > a.name? -1 :1; //姓名升冪排序
+   })
+
+   console.log(people);
+
+    
+  </script>
+</body>
+</html>
