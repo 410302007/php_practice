@@ -3,7 +3,7 @@ require './parts/connect_db.php';
 $pageName = 'list';
 $title = "資料列表";
 
-$perPage = 25;
+$perPage = 20;
 $page = isset($_GET['page']) ? intval($_GET['page']) : 1;  //如果沒有設定，查看的就是第一頁 
 if ($page < 1) {
   header('Location: ?page=1'); //頁數小於1,轉向第一頁
@@ -12,7 +12,7 @@ if ($page < 1) {
 
 
 
-$t_sql = "SELECT COUNT(1) FROM address_book";
+$t_sql = "SELECT COUNT(1) FROM member";
 $totalRows = $pdo->query($t_sql)->fetch(PDO::FETCH_NUM)[0];
 $totalPages = ceil($totalRows / $perPage);
 
@@ -28,7 +28,7 @@ if (!empty($totalRows)) {
   }
 
   $sql = sprintf(
-    "SELECT * FROM address_book ORDER BY mid DESC LIMIT %s, %s",
+    "SELECT * FROM member ORDER BY mid DESC LIMIT %s, %s",
     ($page - 1) * $perPage,
     $perPage
   );

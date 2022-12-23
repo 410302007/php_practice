@@ -1,5 +1,5 @@
 <?php
-require './admin-required.php';
+// require './login-client.php';
 require './parts/connect_db.php';
 header('Content-Type: application/json');
 
@@ -11,11 +11,11 @@ $output = [
   'errors' => []
 ];
 
-// if (empty($_POST['name'])) {
-//   $output['errors']['name'] = '沒有姓名資料';
-//   echo json_encode($output, JSON_UNESCAPED_UNICODE);
-//   exit;
-// }
+if (empty($_POST['name'])) {
+  $output['errors']['name'] = '沒有姓名資料';
+  echo json_encode($output, JSON_UNESCAPED_UNICODE);
+  exit;
+}
 
 //TODO: 欄位資料檢查
 $isPass = true; //是否通過驗證(預設:true)
@@ -24,6 +24,10 @@ $email = $_POST['email'] ?? '';
 $mobile = $_POST['mobile'] ?? '';
 $birthday = $_POST['birthday'] ?? '';
 $address = $_POST['address'] ?? '';
+$password = $_POST['password'] ?? '';
+// $hash =  password_hash($_POST['password'], PASSWORD_BCRYPT);
+
+// $hash = password_hash($_POST['password'], PASSWORD_BCRYPT);
 
 
 if (mb_strlen($name) < 2) { //mb-strlen->中文字英文字轉字串
@@ -34,12 +38,25 @@ if (mb_strlen($email) < 2) {
   $output['errors']['email'] = '請填寫正確的email';
   $isPass = false;
 }
+if (!preg_match(
+  '/(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]{8,}/',
+  $password
+)) {
+  $output['errors']['password'] = '格式不符';
+  $isPass = false;
+}
+// if (!preg_match(
+//   '/(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]{8,}/',
+//   $password
+// )) {
+//   echo "error";
+// };
 
 
-
-$sql = "INSERT INTO `member`(`name`, `email`, `mobile`, `birthday`, `address`, `created_at`) VALUES (
+$sql = "INSERT INTO `member`(`name`, `email`, `mobile`, `birthday`, `address`, `password`,`created_at`) VALUES (
   ?,?,?,
-  ?,?,NOW()
+  ?,?,?,
+  NOW()
 )";
 $stmt = $pdo->prepare($sql);
 
@@ -54,12 +71,15 @@ if (empty($birthday)) {
   $birthday = null;
 }
 if ($isPass) {
+  $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+
   $stmt->execute([
     $name,
-    $email,   //$_POST['email']??'', > 如果沒有自然define就寫入空字串
+    $email,
     $mobile,
     $birthday,
     $address,
+    $password,
   ]);
   //有無新增成功-> 看rowCount
   $output['success'] = !!$stmt->rowCount();

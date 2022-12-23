@@ -1,8 +1,14 @@
 <?php
 
 require './parts/connect_db.php';
-$pageName = 'add';
-$title = '新增資料';
+$pageName = 'register';
+$title = '註冊';
+
+
+if (isset($_SESSION["action"])) {
+  header("Location: index_.php");
+  exit();
+}
 ?>
 
 
@@ -13,8 +19,8 @@ $title = '新增資料';
     <div class="col-lg-6">
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title">新增資料</h5>
-          <form name="form1" onsubmit="checkForm(event)" novalidate>
+          <h5 class="card-title">會員註冊</h5>
+          <form action="" name="form1" onsubmit="checkForm(event)" novalidate>
             <!--novalidate->不要驗證-->
             <div class="mb-3">
               <label for="name" class="form-label">名字</label>
@@ -28,7 +34,7 @@ $title = '新增資料';
             </div>
             <div class="mb-3">
               <label for="mobile" class="form-label">電話</label>
-              <input type="number" class="form-control" id="mobile" name="mobile" pattern="09\d{2}\d{3}\d{3}">
+              <input type="text" class="form-control" id="mobile" name="mobile" pattern="09\d{2}\d{3}\d{3}">
               <div class="form-text"></div>
             </div>
             <div class="mb-3">
@@ -42,8 +48,20 @@ $title = '新增資料';
               <textarea class="form-control" name="address" id="address" cols="30" rows="3"></textarea>
               <div class="form-text"></div>
             </div>
+            <div class="mb-3">
+              <label for="password" class="form-label">密碼</label>
+              <input type="password" class="form-control" id="password" name="password">
+              <div class="form-text"></div>
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label">再次確認密碼</label>
+              <input type="password" class="form-control" id="cpassword" name="cpassword">
+              <div class="form-text"></div>
+            </div>
 
-            <button type="submit" class="btn btn-primary">送出</button>
+            <button type="submit" value="register" class="btn btn-primary">送出</button>
+            <br>
+            <p>已經成為會員?</p><a href="login-client.php">登入</a>
           </form>
         </div>
       </div>
@@ -65,7 +83,10 @@ $title = '新增資料';
     return re.test(email);
   }
 
-
+  // function validating(mobile) {
+  //   var me = preg_match('/^[0-9]{10}+$/');
+  //   return me.test(mobile);
+  // }
 
 
   const checkForm = (e) => {
@@ -101,20 +122,34 @@ $title = '新增資料';
       field.nextElementSibling.innerHTML = '請輸入正確的信箱';
     }
 
+    let pw1 = document.form1.password; //當前要驗證的欄位
+    if (pw1.value.length < 8) { //password長度大於8
+      isPass = false; //沒有通過驗證
+      pw1.style.border = '2px solid red';
+      pw1.nextElementSibling.innerHTML = '密碼長度必須要大於 8 個字元以上，並包含小寫字母、大寫字母、數字至少各1';
+    }
+    pw1 = document.form1.password;
+    let pw2 = document.form1.cpassword; //當前要驗證的欄位
+    if (pw1.value != pw2.value) {
+      isPass = false; //沒有通過驗證
+      pw2.style.border = '2px solid red';
+      pw2.nextElementSibling.innerHTML = '兩次密碼並不相同!';
+    }
+
     // field = document.form1.mobile; //當前要驗證的欄位
-    // if (!validate_mobile(field.value)) {
+    // if (!validating(field.value).length < 10) {
     //   isPass = false; //沒有通過驗證
     //   field.style.border = '2px solid red';
     //   field.nextElementSibling.innerHTML = '請輸入正確的電話';
     // }
-
-
-
     if (!isPass) {
       return; //沒有通過驗證就結束，不發AJAX request
     }
 
     const formData = new FormData(document.form1); //formData 為表單物件
+
+
+
 
     //轉換為json格式
     // fetch('add-api.php', {
@@ -125,14 +160,15 @@ $title = '新增資料';
     // }).then(obj => {
     //   console.log(obj);
     // })方法同下
-    fetch('add-api.php', {
+    fetch('register-api.php', {
         method: 'POST', //post 方式送表單
         body: formData //送formData這個物件
       }).then(r => r.json())
       .then(obj => {
         console.log(obj);
         if (obj.success) {
-          alert('新增成功');
+          alert('註冊成功');
+          location.href = "index_.php";
         } else {
           for (let k in obj.errors) {
             const el = document.querySelector('#' + k);

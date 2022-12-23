@@ -4,42 +4,42 @@ $pageName = 'list';
 $title = "資料列表";
 
 $perPage = 20;
-$page = isset($_GET['page']) ? intval($_GET['page']) : 1;  //如果沒有設定，查看的就是第一頁 
+$page = isset($_GET['page']) ? intval($_GET['page']) : 1;
 if ($page < 1) {
-  header('Location: ?page=1'); //頁數小於1,轉向第一頁
+  header('Location: ?page=1');
   exit;
 }
 
-
-
 $t_sql = "SELECT COUNT(1) FROM member";
+// 總筆數
 $totalRows = $pdo->query($t_sql)->fetch(PDO::FETCH_NUM)[0];
+
+// 總頁數
 $totalPages = ceil($totalRows / $perPage);
 
-
-
 $rows = [];
-//如果有資料的話，我才做分頁
+// 如果有資料的話
 if (!empty($totalRows)) {
   if ($page > $totalPages) {
-    //頁碼超出範圍時，轉向最後一頁
+    // 頁碼超出範圍時, 轉向到最後一頁
     header('Location: ?page=' . $totalPages);
     exit;
   }
 
   $sql = sprintf(
-    "SELECT * FROM member ORDER BY mid DESC LIMIT %s, %s",
+    "SELECT * FROM member ORDER BY mid  LIMIT %s, %s",
     ($page - 1) * $perPage,
     $perPage
   );
-  $rows = $pdo->query($sql)->fetchAll();  //如果有資料,再拿資料分頁
+  $rows = $pdo->query($sql)->fetchAll();
 }
 
 
 
 
-?>
 
+
+?>
 <?php include './parts/html-head.php' ?>
 <?php include './parts/navbar.php' ?>
 <div class="container">
@@ -47,16 +47,22 @@ if (!empty($totalRows)) {
     <div class="col">
       <nav aria-label="Page navigation example">
         <ul class="pagination">
-          <li class="page-item <?= $page == 1 ? 'disabled' : '' ?>"><a class="page-link" href="?page=<?= $page - 1 ?>"><i class="fa-solid fa-circle-arrow-left"></i></a></li>
-          <?php for ($i = $page - 3; $i <= $page + 3; $i++) : if ($i >= 1 and $i <= $totalPages) : ?>
-              <li class="page-item <?= $i == $page ? 'active' : '' ?>">
-                <!---->
+          <li class="page-item <?= $page == 1 ? 'disabled' : '' ?>">
+            <a class="page-link" href="?page=<?= $page - 1 ?>"><i class="fa-solid fa-circle-arrow-left"></i></a>
+          </li>
+
+          <?php for ($i = $page - 5; $i <= $page + 5; $i++) :
+            if ($i >= 1 and $i <= $totalPages) :
+          ?>
+              <li class="page-item <?= $i == $page ? 'active' : '' ?> ">
                 <a class="page-link" href="?page=<?= $i ?>"><?= $i ?></a>
               </li>
           <?php endif;
-          endfor ?>
+          endfor; ?>
 
-          <li class="page-item <?= $page == $totalPages ? 'disabled' : '' ?>"><a class="page-link" href="?page=<?= $page + 1 ?>"><i class="fa-solid fa-circle-arrow-right"></i></a></li>
+          <li class="page-item <?= $page == $totalPages ? 'disabled' : '' ?>">
+            <a class="page-link" href="?page=<?= $page + 1 ?>"><i class="fa-solid fa-circle-arrow-right"></i></a>
+          </li>
         </ul>
       </nav>
     </div>
@@ -69,7 +75,7 @@ if (!empty($totalRows)) {
             <th scope="col"><i class="fa-solid fa-trash-can"></i></th>
             <th scope="col">#</th>
             <th scope="col">姓名</th>
-            <th scope="col">電郵</th>
+            <th scope="col">信箱</th>
             <th scope="col">手機</th>
             <th scope="col">生日</th>
             <th scope="col">地址</th>
@@ -82,10 +88,15 @@ if (!empty($totalRows)) {
           <?php foreach ($rows as $r) : ?>
             <tr>
               <td>
-                <a href="javascript:" onclick="remove_item(event)">
-                  <!--使用event.target=>可能會抓到i或a的值;
-                    使用event.currentTarget =>抓到a值
-                -->
+                <?php /*
+                <a href="delete.php?mid=<?= $r['mid'] ?>"
+                  onclick="return confirm('確定要刪除這筆資料嗎?')"
+                >
+                  <i class="fa-solid fa-trash-can"></i>
+                </a>
+              */ ?>
+
+                <a href="javascript: delete_it(<?= $r['mid'] ?>)">
                   <i class="fa-solid fa-trash-can"></i>
                 </a>
               </td>
@@ -94,7 +105,10 @@ if (!empty($totalRows)) {
               <td><?= $r['email'] ?></td>
               <td><?= $r['mobile'] ?></td>
               <td><?= $r['birthday'] ?></td>
-              <td><?= $r['address'] ?></td>
+              <!--
+              <td><?= strip_tags($r['address']) ?></td>
+          -->
+              <td><?= htmlentities($r['address']) ?></td>
               <td><?= $r['member_status'] == 1 ? '正常' : '停權' ?></td>
               <td><?= $r['created_at'] ?></td>
               <td>
@@ -107,14 +121,16 @@ if (!empty($totalRows)) {
         </tbody>
 
       </table>
+
     </div>
   </div>
 </div>
-
 <?php include './parts/scripts.php' ?>
 <script>
-  function remove_item(e) {
-    e.target.closest('tr').remove();
+  function delete_it(mid) {
+    if (confirm(`確定要刪除編號為 ${mid} 的資料嗎?`)) {
+      location.href = `delete.php?mid=${mid}`;
+    }
   }
 </script>
 <?php include './parts/html-foot.php' ?>
