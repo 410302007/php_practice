@@ -45,7 +45,7 @@ if (empty($r)) {
 
             <div class="mb-3">
               <label for="mobile" class="form-label">電話</label>
-              <input type="number" class="form-control" id="mobile" name="mobile" value="<?= $r['mobile'] ?>" pattern="09\d{2}?\d{3}?\d{3}">
+              <input type="text" class="form-control" id="mobile" name="mobile" value="<?= $r['mobile'] ?>" pattern="09\d{2}?\d{3}?\d{3}">
               <div class="form-text"></div>
             </div>
 
