@@ -30,9 +30,11 @@ if (isset($_SESSION['client'])) {
               <div class="form-text"></div>
             </div>
             <button type="submit" value="Login" class="btn btn-primary">登入</button>
+            <button type="submit" value="reset" class="btn btn-primary"><a href="#" onclick="location.href='forget-password.php'"></a>忘記密碼</button>
             <br>
             <p>還沒成為會員嗎?</p>
             <a href="register.php">註冊會員</a>
+
           </form>
 
         </div>
