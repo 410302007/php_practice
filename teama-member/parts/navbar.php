@@ -35,6 +35,7 @@
             <li class="nav-item">
               <a class="nav-link <?= $pageName == 'login' ? 'active' : '' ?>" href="login.php">管理者登入</a>
             </li>
+            <br>
             <li class="nav-item">
               <a class="nav-link <?= $pageName == 'login' ? 'active' : '' ?>" href="login-client.php">用戶登入</a>
             </li>
