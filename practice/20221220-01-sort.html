@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+
+
+  <script>
+    const ar1 = [8,4,12,32,29];
+
+    // ar1.sort();  預設排序，視為字串排序
+
+    // ar1.sort(function(a,b){
+    // //  console.log({a,b});
+    //   return a-b;    //數值由小排到大
+    // })
+    
+    ar1.sort(function(a,b){
+    //  console.log({a,b});
+      return b-a;    //數值由大排到小
+    })
+    console.log(JSON.stringify(ar1));
+    console.log(ar1);        //顯示資料展開的狀態
+
+  </script>
+</body>
+</html>
