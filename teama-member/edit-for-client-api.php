@@ -1,5 +1,5 @@
 <?php
-require './client-required.php';
+require './client-required-api.php';
 require './parts/connect_db.php';
 header('Content-Type: application/json');
 
@@ -21,6 +21,8 @@ if (empty($_POST['name'])) {
   echo json_encode($output, JSON_UNESCAPED_UNICODE);
   exit;
 }
+
+
 
 // TODO: 欄位資料檢查
 
