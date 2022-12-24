@@ -22,6 +22,11 @@ if (empty($_POST['name'])) {
   exit;
 }
 
+// if (empty($_GET['filename'])) {
+//   $output['error'] = '沒有資料';
+//   echo json_encode($output, JSON_UNESCAPED_UNICODE);
+//   exit;
+// }
 
 
 // TODO: 欄位資料檢查
@@ -90,9 +95,13 @@ if ($isPass) {
     $address,
     $password,
     $mid,
+    // $_SESSION['client']['mid'],
   ]);
 
   $output['success'] = !!$stmt->rowCount();
+  // if ($output['success']) {
+  //   $_SESSION['client']['avatar'] = $_GET['filename'];
+  // }
 }
 
 
