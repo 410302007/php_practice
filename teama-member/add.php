@@ -13,7 +13,7 @@ $title = '新增資料';
     <div class="col-lg-6">
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title">新增資料</h5>
+          <h5 class="card-title">新增會員資料</h5>
           <form name="form1" onsubmit="checkForm(event)" novalidate>
             <!--novalidate->不要驗證-->
             <div class="mb-3">
