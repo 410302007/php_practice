@@ -19,13 +19,13 @@
     p1.then(result=>{                //then -> 使用Promise   //result ->可自行命名
       console.log({result});
       // return 'world';
-      return new Promise((resolve,reject)=>{        //Promise 非同步
+      return new Promise((resolve,reject)=>{        //then裡面又做了一個 new promise ,後面then會等promise做好後才做
       setTimeout(()=>{
         resolve("Steve");
        
       },2000);
     });
-    }).then(a=>{                     //catch: Promise之方法  
+    }).then(a=>{                     
      
       console.log({a});
     });                  
