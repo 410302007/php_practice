@@ -8,7 +8,7 @@
 </head>
 <body>
   <script>
-
+    //promise 中有任何錯誤，會直接執行下方的catch，中間的then都不執行
     const p1 = new Promise((resolve,reject)=>{        //Promise 非同步
       setTimeout(()=>{
         resolve("Hello");
