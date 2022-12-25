@@ -40,7 +40,7 @@
               <a class="nav-link <?= $pageName == 'login-client' ? 'active' : '' ?>" href="login-client.php">用戶登入</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link <?= $pageName == 'register' ? 'active' : '' ?>" href="register.php">註冊</a>
+              <a class="nav-link <?= $pageName == 'register' ? 'active' : '' ?>" href="register.php">用戶註冊</a>
             </li>
           <?php endif ?>
         </ul>
