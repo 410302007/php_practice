@@ -21,10 +21,10 @@ $row = $stmt->fetch();
 <?php include './parts/html-headforclient.php' ?>
 <?php include './parts/navbarforclient.php' ?>
 
-<h1 class="my-5">你好， <b><?php echo $_SESSION["client"]['name']; ?></b>，歡迎光臨!</h1>
-<p>
+<h2 class="my-5 text-center">你好， <b><?php echo $_SESSION["client"]['name']; ?></b>，歡迎光臨!</h2>
+<p class="text-center">
   <a href="edit-for-client.php?mid=<?php echo $_SESSION["client"]['mid']; ?>" class="btn btn-primary">編輯個人資料</a>
-  <!-- <a href="reset-password.php" class="btn btn-warning">重設密碼</a> -->
+  <!-- <a href="reset_password.php" class="btn btn-primary ml-3">重設密碼</a> -->
   <a href="logout-api.php" class="btn btn-danger ml-3">登出</a>
 </p>
 <?php include './parts/scripts.php' ?>
