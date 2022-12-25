@@ -41,6 +41,7 @@ $mobile = $_POST['mobile'] ?? '';
 $birthday = $_POST['birthday'] ?? '';
 $address = $_POST['address'] ?? '';
 $password = $_POST['password'] ?? '';
+// $pet_type = $_POST['pet_type'] ?? '';
 // $member_status = $_POST['member_status'] ?? '';
 
 
@@ -69,6 +70,7 @@ $sql = "UPDATE `member` SET
 `mobile`=?,
 `birthday`=?,
 `address`=?,
+-- `pet_type`=?,
 `password`=?
 WHERE `mid`=?";
 
@@ -93,6 +95,7 @@ if ($isPass) {
     $mobile,
     $birthday,
     $address,
+    // $pet_type,
     $password,
     $mid,
     // $_SESSION['client']['mid'],

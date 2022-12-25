@@ -69,13 +69,18 @@ if (empty($r)) {
                 <option value="0" <?= $r['member_status'] == 0 ? 'selected' : '' ?>>停權</option>
                 <option value="1" <?= $r['member_status'] == 1 ? 'selected' : '' ?>>正常</option>
               </select>
-
-              <!-- <input type="option" class="form-control" id="member_status" name="member_status" value="<?= $r['member_status'] ?>">
-              <div class="form-text"></div> -->
             </div>
+            <!-- <div class="mb-3 ">
+              <label for="pet_type" class="form-label">寵物種類</label>
+              <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                <option value="0" <?= $r['pet_type'] == 0 ? 'selected' : '' ?>>貓</option>
+                <option value="1" <?= $r['pet_type'] == 1 ? 'selected' : '' ?>>狗</option>
+              </select>
+            </div> -->
 
 
             <button type="submit" class="btn btn-primary">修改</button>
+            <input type="button" class="btn btn-primary" onclick="history.back();" value="返回">
           </form>
 
         </div>

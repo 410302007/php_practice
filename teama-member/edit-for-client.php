@@ -66,9 +66,18 @@ if (empty($r)) {
 
             <div class="mb-3">
               <label for="password" class="form-label">更新密碼</label>
-              <input type="text" class="form-control" id="password" name="password" required>
+              <input type="text" class="form-control" id="password" name="password">
               <div class="form-text"></div>
             </div>
+            <!-- <div class="mb-3 ">
+              <label for="pet_type" class="form-label">寵物種類</label>
+              <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                <option value="0" <?= $r['pet_type'] == 0 ? 'selected' : '' ?>>貓</option>
+                <option value="1" <?= $r['pet_type'] == 1 ? 'selected' : '' ?>>狗</option>
+              </select>
+            </div> -->
+
+
             <button type="submit" class="btn btn-primary">修改</button>
             <input type="button" class="btn btn-primary" onclick="history.back();" value="返回">
 

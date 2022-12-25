@@ -33,7 +33,9 @@ $email = $_POST['email'] ?? '';
 $mobile = $_POST['mobile'] ?? '';
 $birthday = $_POST['birthday'] ?? '';
 $address = $_POST['address'] ?? '';
+// $pet_type = $_POST['pet_type'] ?? '';
 $member_status = $_POST['member_status'] ?? '';
+
 
 
 
@@ -55,6 +57,7 @@ $sql = "UPDATE `member` SET
 `birthday`=?,
 `address`=?,
 `member_status`=?
+-- `pet_type`=?
 WHERE `mid`=?";
 
 $stmt = $pdo->prepare($sql);
@@ -76,6 +79,7 @@ if ($isPass) {
     $mobile,
     $birthday,
     $address,
+    // $pet_type,
     $member_status,
     $mid,
   ]);

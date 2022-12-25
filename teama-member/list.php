@@ -73,6 +73,7 @@ if (!empty($totalRows)) {
             <th scope="col">手機</th>
             <th scope="col">生日</th>
             <th scope="col">地址</th>
+            <!-- <th scope="col">寵物種類</th> -->
             <th scope="col">帳號狀態</th>
             <th scope="col">創建時間</th>
             <th scope="col"><i class="fa-solid fa-file-pen"></i></th>
@@ -92,6 +93,7 @@ if (!empty($totalRows)) {
               <td><?= $r['mobile'] ?></td>
               <td><?= $r['birthday'] ?></td>
               <td><?= $r['address'] ?></td>
+              <!-- <td><?= $r['pet_type'] == 1 ? '狗' : '貓' ?></td> -->
               <td><?= $r['member_status'] == 1 ? '正常' : '停權' ?></td>
               <td><?= $r['created_at'] ?></td>
               <td>
@@ -127,4 +129,5 @@ if (!empty($totalRows)) {
 </div>
 
 <?php include './parts/scripts.php' ?>
+
 <?php include './parts/html-foot.php' ?>
