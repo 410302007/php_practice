@@ -17,7 +17,7 @@
         <ul class="navbar-nav  mb-2 mb-lg-0">
           <?php if (isset($_SESSION['client'])) : ?>
             <li class="nav-item">
-              <a class="nav-link" href="edit_avatar.php"><?= $_SESSION['client']['email'] ?></a>
+              <a class="nav-link" href="edit-for-client.php"><?= $r['name'] ?></a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="logout-api.php">登出</a>
