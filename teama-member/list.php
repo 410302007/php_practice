@@ -66,6 +66,7 @@ if (!empty($totalRows)) {
       <table class="table table-striped table-bordered">
         <thead>
           <tr>
+            <th scope="col">檢視</i></th>
             <th scope="col"><i class="fa-solid fa-trash"></i></th>
             <th scope="col">#</th>
             <th scope="col">姓名</th>
@@ -82,6 +83,11 @@ if (!empty($totalRows)) {
         <tbody>
           <?php foreach ($rows as $r) : ?>
             <tr>
+              <td>
+                <a href="details.php?mid=<?= $r['mid'] ?>">
+                  <i class="fa-solid fa-eye"></i>
+                </a>
+              </td>
               <td>
                 <a href="delete.php?mid=<?= $r['mid'] ?>">
                   <i class="fa-solid fa-trash"></i>
